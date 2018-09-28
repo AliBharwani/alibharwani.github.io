@@ -1,7 +1,7 @@
 ---
 title: Experience
 icon: fa-code
-order: 4
+order: 5
 ---
 <img src="{{ 'assets/images/GTRI.png' | relative_url }}" height="100" alt="GTRI logo" />
 
