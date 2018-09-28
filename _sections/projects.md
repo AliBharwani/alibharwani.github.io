@@ -1,7 +1,7 @@
 ---
 title: Projects
 icon: fa-th
-order: 5
+order: 6
 ---
 
 ## Atlanta Zoo Database
