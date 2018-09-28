@@ -6,11 +6,11 @@ order: 5
 <img src="{{ 'assets/images/GTRI.png' | relative_url }}" height="100" alt="GTRI logo" />
 
 ### Georgia Tech Research Institute
-### CIPHER (Cyber security, information protection, hardware evaluation research lab) 
+# *CIPHER (Cyber Security, Information Protection, Hardware Evaluation Research lab)* 
 # *Cyber Security Research Intern*
 
 
-Worked with research scientists to develop high-impact solutions to some of today’s most challenging cybersecurity problems for both government and industry. Developed full-stack sentiment analysis engine using cutting edge NLP tools to retrieve, analyze, and display social media reactions to major world events. Additionally worked on project utilizing adversarial machine learning to fool current ML algorithms and expose their vulnerabilities.
+Worked alongside research scientists to develop high-impact solutions to some of today’s most challenging cybersecurity problems for both government and industry. Developed full-stack sentiment analysis engine using cutting edge NLP tools to retrieve, analyze, and display social media reactions to major world events. Additionally worked on project utilizing adversarial machine learning to fool current ML algorithms and expose their vulnerabilities.
 
 
 <img src="{{ 'assets/images/GCVB.png' | relative_url }}" height="100" alt="GCVB logo" />
