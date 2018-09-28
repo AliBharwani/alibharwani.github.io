@@ -1,6 +1,6 @@
 ---
 title: Organizations
-icon: fa-institution
+icon: fa-university
 order: 4
 ---
 <img src="{{ 'assets/images/greyhat.png' | relative_url }}" width="500" alt="GreyHat" />
