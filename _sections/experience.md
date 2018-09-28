@@ -3,17 +3,20 @@ title: Experience
 icon: fa-code
 order: 4
 ---
-<img src="{{ 'assets/images/GTRI.png' | relative_url }}" height="200" alt="GTRI logo" />
+<img src="{{ 'assets/images/GTRI.png' | relative_url }}" height="100" alt="GTRI logo" />
 
 ### Georgia Tech Research Institute
-### CIPHER (Cyber security, information protection, hardware evaluation research) 
-## *Cyber Security Research Intern*
+### CIPHER (Cyber security, information protection, hardware evaluation research lab) 
+# *Cyber Security Research Intern*
+
 
 Worked with research scientists to develop high-impact solutions to some of today’s most challenging cybersecurity problems for both government and industry. Developed full-stack sentiment analysis engine using cutting edge NLP tools to retrieve, analyze, and display social media reactions to major world events. Additionally worked on project utilizing adversarial machine learning to fool current ML algorithms and expose their vulnerabilities.
 
-<img src="{{ 'assets/images/GCVB.png' | relative_url }}" height="200" alt="GCVB logo" />
+
+<img src="{{ 'assets/images/GCVB.png' | relative_url }}" height="100" alt="GCVB logo" />
 
 ### Gwinnett County Visitors and Tourism Bureau
-## *Marketing Intern*
+# *Marketing Intern*
+
 
 Helped organize county-wide events including festivals, park openings, and workshops by working with coworkers to manage logistics and coordinate with third parties
