@@ -1,7 +1,7 @@
 ---
 title: Accolades
 icon: fa-trophy
-order: 6
+order: 7
 ---
 
 ## Platinum Federal Credit Union Scholarship
