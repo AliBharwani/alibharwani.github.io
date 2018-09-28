@@ -3,9 +3,7 @@ title: Organizations
 icon: fa-institution
 order: 4
 ---
-
 <img src="{{ 'assets/images/greyhat.png' | relative_url }}" width="500" alt="GreyHat" />
-
 
 ## GreyH@t
 ### Communications Admin
