@@ -1,11 +1,11 @@
 ---
 title: Experience
 icon: fa-code
-order: 5
+order: 4
 ---
 
 Georgia Tech Research Institute, CIPHER (Cyber security, information protection, hardware evaluation research) lab
- Research Engineer Intern
+ Cyber Security Research Intern
 
 Worked side by side with research scientists on Department of Defense security contracts; developed software to analyze sentiment in social media using NLP tools such as GloVe, VADER sentiment analysis, and PanasX mood scoring. Additionally worked on project utilizing adversarial machine learning to fool current ML algorithms and expose their vulnerabilities 
 
