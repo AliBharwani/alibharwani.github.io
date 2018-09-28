@@ -5,7 +5,7 @@ order: 3
 ---
 <img src="{{ 'assets/images/GaTech-Seal.png' | relative_url }}" width="200" alt="GaTech Seal" />
 
-#Georgia Institute of Technology
+# Georgia Institute of Technology
 
 **GPA: 4.0 / 4.0** 
 
