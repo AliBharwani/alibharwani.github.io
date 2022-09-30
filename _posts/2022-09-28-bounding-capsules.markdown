@@ -47,7 +47,7 @@ The entries on the diagonal are the covariance of a variable itself, which is th
 
 However, for our case this simple calculation of covariance might not be sufficient. We need to consider how this applies to our data. For one, we don’t want to consider interior points - we’re only interested in the points that define the shell of our volume. To be specific, we want to make sure our vertices form a [**convex hull**](https://brilliant.org/wiki/convex-hull/).
 
-Luckily, most meshes are by definition are convex hulls. However, the data defining the mesh can still be skewed in a way that messes up our calculation. For example, for the upper left leg, there are a lot more vertices around the inside groin area than any other part of the surface, so our bounding volumes can end up looking like this: 
+Luckily, most meshes are by definition convex hulls. However, the data defining the mesh can still be skewed in a way that messes up our calculation. For example, for the upper left leg, there are a lot more vertices around the inside groin area than any other part of the surface, so our bounding volumes can end up looking like this: 
 
 <div style="text-align:center;">
 <figure><img src="/assets/discrete-covar-unity.png"></figure>
@@ -431,6 +431,8 @@ And here's what our final character looks like! I used [5] to generate capsule m
 <div style="text-align:center;">
 <figure><img src="/assets/final-capsule-unity.png"> </figure>
 </div>
+
+Also, you may have noticed we only ended up needing the largest eigenvalue. That's because for a capsule, the radius will be orthogonal to our principal axis. The other eigenvectors are useful for calculating Oriented Bounding Boxes (OBBs) - we'll go over how to do that in part 2 of this blog :) 
 
 [1] Christer Ericson. 2004. Real-Time Collision Detection. CRC Press, Inc., USA.
 
