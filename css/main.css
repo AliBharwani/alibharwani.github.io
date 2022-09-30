@@ -260,6 +260,10 @@ a:visited { color: #205caa; }
 
 .post pre.terminal code { background-color: #333; }
 
+.post .img-caption {
+  font-style: italic
+}
+
 /* AK custom CSS mods */
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {
