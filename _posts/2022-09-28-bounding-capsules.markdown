@@ -165,6 +165,19 @@ Let's see how this looks implemented into code:
 
         return covar;
     }
+
+    public static float triangle_area(Vector3 a, Vector3 b, Vector3 c)
+    {
+        Vector3 ba = b - a;
+        Vector3 ca = c - a;
+        Vector3 cross = Vector3.Cross(ba, ca);
+        return cross.magnitude / 2;
+    }
+
+    public static Vector3 triangle_centroid(Vector3 a, Vector3 b, Vector3 c)
+    {
+        return (a + b + c) / 3;
+    }
 ```
 
 Now let's see how our primary axis will look
