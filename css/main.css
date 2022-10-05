@@ -264,6 +264,11 @@ a:visited { color: #205caa; }
   font-style: italic
 }
 
+.post .normal-text {
+  text-decoration: none;
+      color: inherit;
+}
+
 /* AK custom CSS mods */
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {

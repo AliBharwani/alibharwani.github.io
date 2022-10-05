@@ -43,11 +43,11 @@ A covariance matrix is a handy way of capturing how much each dimension varies w
 | y   | covar(y,x)        | covar(y,y)       | covar(y,z)       |
 | z   | covar(z,x)        | covar(z,y)         | covar(z,z)        |
 
-The entries on the diagonal are the covariance of a variable itself, which is the same as its variance. You might also notice this matrix is symmetrical. That is an important property we will exploit later. 
+The entries on the diagonal are the covariance of a variable with itself, which is the same as its variance. You might also notice this matrix is symmetrical. That is an important property we will exploit later. 
 
 However, for our case this simple calculation of covariance might not be sufficient. We need to consider how this applies to our data. For one, we don’t want to consider interior points - we’re only interested in the points that define the shell of our volume. To be specific, we want to make sure our vertices form a [**convex hull**](https://brilliant.org/wiki/convex-hull/).
 
-Luckily, most meshes are by definition convex hulls. However, the data defining the mesh can still be skewed in a way that messes up our calculation. For example, for the upper left leg, there are a lot more vertices around the inside groin area than any other part of the surface, so our bounding volumes can end up looking like this: 
+Luckily, most meshes are by definition convex hulls. However, the data defining the mesh can still be skewed in a way that messes up our calculation. For example, for the upper left leg, there are a lot more vertices around the inside groin area than any other part of the surface, so our primary axis can end up looking like this: 
 
 <div style="text-align:center;">
 <figure><img src="/assets/discrete-covar-unity.png"></figure>
@@ -55,7 +55,7 @@ Luckily, most meshes are by definition convex hulls. However, the data defining 
 
 In order to prevent this, we can use the continuous formulation for covariance, shown below, and do some culling on tightly grouped vertices before hand:
 
-**Continous Covariance** [1]
+**Continous Covariance** [[1]](#footnote1)
 
 Given \\(n\\) triangles \\(\(p_{k}, q_{k}, r_{k})\\), \\(0 \le k < n\\), in the convex hull, the covariance matrix is given by
 
@@ -192,7 +192,7 @@ Much better! But how *do* we get that primary axis?
 
 The eigenvectors of a matrix are an important concept in linear algebra. A matrix is a transformation of space, and eigenvectors are special in that when the matrix transformation of space occurs, these vectors will point in the same direction, and will only be scaled by a scalar value - their corresponding eigenvalue. 
 
-There are a ton of ways to compute eigenvectors; usually, I would recommend power iteration [2], as it is the simplest to implement. However, our matrix is symmetrical, so there exists a direct formula for calculating the eigenvalues [3]. There's a lot of code in this next block, but most of it is the implementation of basic matrix operations.
+There are a ton of ways to compute eigenvectors; usually, I would recommend power iteration [[2]](#footnote2), as it is the simplest to implement. However, our matrix is symmetrical, so there exists a direct formula for calculating the eigenvalues [[3]](#footnote3). There's a lot of code in this next block, but most of it is the implementation of basic matrix operations.
 
 ```cs
     public static double det(double[,] x)
@@ -354,7 +354,7 @@ With these eigenvalues we can calculate the corresponding eigenvectors. Again, w
 
 Great! Now we have the primary and secondary axes - but we still don’t know where the sweeping line should start and end. In order to find the length of the primary axis, we can project all the points onto the primary axis and find the maximum distance between any two points. So far I have been referring to the largest eigenvector as the primary axis, but we need two points to define a line, so we’ll use the mean of the vertices as the other point. 
 
-For the radius, we could select a value large enough that all the points are inside the capsule, but these vertices should really define the surface of the capsule. To find a good radius, we should find a value that minimizes the sum of the squared distances from the vertices to the surface of the capsule. This is the same as the mean of the distances of the vertices to the principal axis [4]
+For the radius, we could select a value large enough that all the points are inside the capsule, but these vertices should really define the surface of the capsule. To find a good radius, we should find a value that minimizes the sum of the squared distances from the vertices to the surface of the capsule. This is the same as the mean of the distances of the vertices to the principal axis [[4]](#footnote4)
 
 ```cs
     public static float get_max_dist_apart(Vector3[] verts,  ref Vector3 center)
@@ -439,21 +439,31 @@ Now that we have all the functionality we need, we can finally write the functio
     }
 ```
 
-And here's what our final character looks like! I used [5] to generate capsule meshes that fit the capsule colliders, modified the shoulder capsules by hand, and used boxes for the feet:
+And here's what our final character looks like! I used [[5]](#footnote5) to generate capsule meshes that fit the capsule colliders, modified the shoulder capsules by hand, and used boxes for the feet:
 
 <div style="text-align:center;">
 <figure><img src="/assets/final-capsule-unity.png"> </figure>
 </div>
 
-Also, you may have noticed we only ended up needing the largest eigenvalue. That's because for a capsule, the radius will be orthogonal to our principal axis. The other eigenvectors are useful for calculating Oriented Bounding Boxes (OBBs) - we'll go over how to do that in part 2 of this blog :) 
-
+Also, you may have noticed we only ended up needing the largest eigenvalue. That's because for a capsule, the radius will be orthogonal to our principal axis. The other eigenvectors are useful for calculating Oriented Bounding Boxes (OBBs) - we'll go over how to do that in part 2 of this blog :)
+<br><br>
+<a name="footnote1" class="normal-text">
 [1] Christer Ericson. 2004. Real-Time Collision Detection. CRC Press, Inc., USA.
-
+</a>
+<br><br>
+<a name="footnote2" class="normal-text">
 [2] A good overview of power iteration: [https://jakerice.design/2018/09/19/Covariance-and-Principal-Component-Analysis/](https://jakerice.design/2018/09/19/Covariance-and-Principal-Component-Analysis/)
-
+</a>
+<br><br>
+<a name="footnote3" class="normal-text">
 [3] [https://en.wikipedia.org/wiki/Eigenvalue_algorithm](https://en.wikipedia.org/wiki/Eigenvalue_algorithm) - see section on symmetric 3x3 matrices 
-
+</a>
+<br><br>
+<a name="footnote4" class="normal-text">
 [4] Two proofs of this (a) [https://stats.stackexchange.com/questions/520286/how-can-i-prove-mathematically-that-the-mean-of-a-distribution-is-the-measure-th](https://stats.stackexchange.com/questions/520286/how-can-i-prove-mathematically-that-the-mean-of-a-distribution-is-the-measure-th)
 (b) [https://math.stackexchange.com/questions/1766713/showing-that-mean-of-vectors-minimizes-the-sum-of-the-squared-distances](https://math.stackexchange.com/questions/1766713/showing-that-mean-of-vectors-minimizes-the-sum-of-the-squared-distances)
-
+</a>
+<br><br>
+<a name="footnote5" class="normal-text">
 [5] See AlucardJay's reply: [https://forum.unity.com/threads/solved-closed-procedurally-generated-capsule.406982/](https://forum.unity.com/threads/solved-closed-procedurally-generated-capsule.406982/)
+</a>
